@@ -32,14 +32,14 @@ class _CameraGalleryScreenState extends State<CameraGalleryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Camera Gallery'),
+        title: const Text('GALYCAM'),
       ),
       body: Column(
         children: [
           _displayImage(),
-          const SizedBox(height: 8),
+          const SizedBox(height: 100),
           SizedBox(
-            width: 350,
+            width: 250,
             child: ElevatedButton.icon(
               onPressed: () {
                 _loadImage(ImageSource.camera);
@@ -48,9 +48,9 @@ class _CameraGalleryScreenState extends State<CameraGalleryScreen> {
               label: const Text('Open Camera'),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           SizedBox(
-            width: 350,
+            width: 250,
             child: ElevatedButton.icon(
               onPressed: () {
                 _loadImage(ImageSource.gallery);
@@ -67,7 +67,7 @@ class _CameraGalleryScreenState extends State<CameraGalleryScreen> {
   Widget _displayImage() {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(45),
         side: const BorderSide(
           color: Colors.green,
           width: 2,
@@ -75,19 +75,22 @@ class _CameraGalleryScreenState extends State<CameraGalleryScreen> {
       ),
       child: ClipRRect(
         // For rounded upper right corner and left corner in imageview
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(55),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.network(
-                    'http://www.clker.com/cliparts/o/G/p/l/g/M/add-student-hi.png',
-                    fit: BoxFit.fill,
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: double.infinity,
-                  )),
+                  child: img==null ?
+                    Image.network(
+                      'https://cdn-icons-png.flaticon.com/512/226/226850.png',
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: MediaQuery.of(context).size.height * 0.1,
+                    )
+                    :Image.file(img!),
+              )
             ],
           ),
         ),
