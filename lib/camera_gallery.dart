@@ -11,7 +11,6 @@ class CameraGalleryScreen extends StatefulWidget {
 }
 
 class _CameraGalleryScreenState extends State<CameraGalleryScreen> {
-  // Load camera and gallery images and store it to the File object.
   File? img;
   Future _loadImage(ImageSource imageSource) async {
     try {
